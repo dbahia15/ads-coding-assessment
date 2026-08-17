@@ -46,7 +46,7 @@ calc_mean <- function(x) {
 #' @export
 calc_median <- function(x) {
   x <- validate_input(x)
-  median(x)
+  stats::median(x)
 }
 
 #' Calculate the mode

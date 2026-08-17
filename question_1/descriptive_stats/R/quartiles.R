@@ -14,7 +14,7 @@
 #' @export
 calc_q1 <- function(x) {
   x <- validate_input(x)
-  unname(quantile(x, probs = 0.25))
+  unname(stats::quantile(x, probs = 0.25))
 }
 #' 
 #' Calculate the third quartile
@@ -33,7 +33,7 @@ calc_q1 <- function(x) {
 #' @export
 calc_q3 <- function(x) {
 x <- validate_input(x)
-  unname(quantile(x, probs = 0.75))
+  unname(stats::quantile(x, probs = 0.75))
 }
 #' 
 #' Calculate the interquartile range
@@ -53,8 +53,8 @@ x <- validate_input(x)
 calc_iqr <- function(x) {
   x <- validate_input(x)
   
-  q3 <- unname(quantile(x, probs = 0.75))
-  q1 <- unname(quantile(x, probs = 0.25))
+  q3 <- unname(stats::quantile(x, probs = 0.75))
+  q1 <- unname(stats::quantile(x, probs = 0.25))
   
   q3 - q1
 }
