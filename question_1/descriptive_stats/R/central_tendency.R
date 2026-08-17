@@ -5,7 +5,7 @@
 #' An error is shown for empty, all missing, or single value inputs.
 #' 
 #' @param x A numeric vector.
-#' @return The mean of the numeric vector.
+#' @return The first quartile.
 #' 
 #'
 #' @examples
