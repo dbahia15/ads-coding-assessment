@@ -3,9 +3,6 @@
 #' Calculates the mean of a numeric vector.
 #' Missing values (`NA` and `NaN`) are removed.
 #' An error is shown for empty, all missing, or single value inputs.
-#' If no value occurs more than once, `NA` is returned and a message
-#' is shown. 
-#' All tied modes are returned.
 #' 
 #' @param x A numeric vector.
 #' @return The mean of the numeric vector.
@@ -57,6 +54,9 @@ calc_median <- function(x) {
 #' Calculates the mode of a numeric vector.
 #' Missing values (`NA` and `NaN`) are removed.
 #' An error is shown for empty, all missing, or single value inputs.
+#' If no value occurs more than once, `NA` is returned and a message
+#' is shown. 
+#' All tied modes are returned.
 #' 
 #' @param x A numeric vector.
 #' @return The mode of the numeric vector.
