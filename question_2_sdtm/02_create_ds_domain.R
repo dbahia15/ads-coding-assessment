@@ -2,10 +2,21 @@
 #
 # Creates the Disposition (DS) domain from pharmaverseraw::ds_raw using the {sdtm.oak} package
 #
+# Required packages
+# Install once in the R Console if they are not already installed:
+# install.packages(c(
+#   "dplyr",
+#   "sdtm.oak",
+#   "pharmaverseraw",
+#   "pharmaversesdtm"
+# ))
+#
+# The installation code is commented out so it does not run whenever
+# this script is sourced.
+#
+#
+#
 ### Set Up ###
-
-# Install required packages
-install.packages(c("sdtm.oak", "pharmaverseraw"))
 
 # Load packages
 library(sdtm.oak)
