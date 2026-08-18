@@ -1,7 +1,18 @@
 # Question 4: TLG Adverse Events Reporting
 #
 # Creates a treatment-emergent adverse-event summary table using {gtsummary}.
-
+#
+#
+# Required packages
+# Install once in the R Console if they are not already installed:
+# install.packages(c(
+#   "dplyr",
+#   "gtsummary",
+#   "gt",
+#   "pharmaverseadam"
+# ))
+#
+#
 ### Set Up ###
 
 # Load packages
