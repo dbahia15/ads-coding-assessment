@@ -2,6 +2,16 @@
 #
 # Creates an ADSL subject-level dataset from SDTM source data using {admiral}.
 #
+# Required packages
+# Install once in the R Console if they are not already installed:
+# install.packages(c(
+#   "dplyr",
+#   "admiral",
+#   "stringr",
+#   "lubridate",
+#   "pharmaversesdtm"
+# ))
+##
 ### Set Up ###
 
 # Load packages
