@@ -8,7 +8,13 @@ Clone the GitHub repository:
 
 ```bash
 git clone https://github.com/dbahia15/ads-coding-assessment.git
-cd ads-coding-assessment
+```
+
+Move into the API folder:
+
+```bash
+cd ads-coding-assessment/question_5_api
+```
 
 ## Installation
 
@@ -20,17 +26,11 @@ python -m pip install fastapi "uvicorn[standard]" pandas
 
 ## Data
 
-The API uses `adae.csv`, exported from `pharmaverseadam::adae`. The CSV file must be in the same folder as `main.py`.
+The API uses `adae.csv`, exported from `pharmaverseadam::adae`. The CSV file is stored in the same folder as `main.py`.
 
 ## Run the API
 
-From the root of the repository, move into the Question 5 folder:
-
-```bash
-cd question_5_api
-```
-
-Start the API:
+Start the API from the `question_5_api` folder:
 
 ```bash
 uvicorn main:app --reload
@@ -42,55 +42,61 @@ The API will run at:
 http://127.0.0.1:8000
 ```
 
-Interactive API documentation is available at:
+FastAPI’s interactive documentation is available at:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
-## Endpoints
+## API Endpoints
 
 ### `GET /`
 
 Returns a welcome message confirming that the API is running.
 
-```json
-{
-  "message": "Clinical Trial Data API is running"
-}
+```bash
+curl http://127.0.0.1:8000/
+# {"message":"Clinical Trial Data API is running"}
 ```
 
 ### `POST /ae-query`
 
-Filters adverse-event records by severity and/or treatment arm.
+Filters the adverse-event cohort by severity and/or treatment arm.
 
-Example request:
+Both filters are optional. If a filter is missing or `null`, it is ignored.
 
-```json
-{
-  "severity": ["MILD", "MODERATE"],
-  "treatment_arm": "Placebo"
-}
+```bash
+curl -X POST http://127.0.0.1:8000/ae-query \
+  -H "Content-Type: application/json" \
+  -d '{"severity":["MILD","MODERATE"],"treatment_arm":"Placebo"}'
 ```
 
-Both filters are optional. A missing or `null` field is ignored.
+The response contains:
 
-The response contains the number of matching AE records and the unique subject IDs.
+* The number of matching adverse-event records.
+* A list of unique subject IDs in the filtered cohort.
 
 ### `GET /subject-risk/{subject_id}`
 
-Calculates a safety risk score for the requested subject.
+Calculates the weighted safety risk score for a subject.
 
-Severity scores are:
+```bash
+curl http://127.0.0.1:8000/subject-risk/01-701-1015
+# {"subject_id":"01-701-1015","risk_score":3,"risk_category":"Low"}
+```
+
+Severity points are assigned as follows:
 
 * `MILD`: 1 point
 * `MODERATE`: 3 points
 * `SEVERE`: 5 points
 
-Risk categories are:
+Risk categories are assigned as follows:
 
 * `Low`: score below 5
 * `Medium`: score from 5 to 14
 * `High`: score of 15 or above
 
-The API returns a `404` error if the subject ID does not exist.
+If the subject ID does not exist, the API returns a `404` error.
+
+
