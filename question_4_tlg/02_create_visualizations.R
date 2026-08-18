@@ -1,6 +1,16 @@
 # Create visualisations using {ggplot2)
-
+#
+#
+# Required packages
+# Install once in the R Console if they are not already installed:
+# install.packages(c(
+#   "dplyr",
+#   "ggplot2",
+#   "pharmaverseadam"
+# ))
+#
 ### Set Up ###
+
 
 # Load packages
 library(dplyr)
